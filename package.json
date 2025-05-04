@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/self-assert/self-assert.github.io/issues"
   },
-  "homepage": "https://github.com/self-assert/self-assert.github.io#readme",
+  "homepage": "https://self-assert.github.io",
   "devDependencies": {
     "vitepress": "^1.6.3",
     "vitepress-plugin-group-icons": "^1.5.2"

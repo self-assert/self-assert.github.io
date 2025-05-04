@@ -3,7 +3,7 @@ import {
   groupIconMdPlugin,
   groupIconVitePlugin,
 } from 'vitepress-plugin-group-icons';
-import { description, name, repository } from '../../package.json';
+import { repository } from '../../package.json';
 
 import selfAssertTypedocSidebar from '../api/core/typedoc-sidebar.json';
 
@@ -11,15 +11,16 @@ const repositoryUrl = `${repository.url
   .replace(/^git\+/, '')
   .replace(/\.git$/, '')}`;
 
-const coreApiSidebar = selfAssertTypedocSidebar
-  .filter((item) => item.text !== 'Others')
-  .map((item) => ({
-    ...item,
-    items: item.items?.map((subItem) => ({
-      ...subItem,
-      link: subItem.link.replace('/api/', '/api/core/'),
-    })),
-  }));
+const coreApiSidebar = selfAssertTypedocSidebar.filter(
+  (item) => item.text !== 'Others'
+);
+// .map((item) => ({
+//   ...item,
+//   items: item.items?.map((subItem) => ({
+//     ...subItem,
+//     link: subItem.link.replace('/api/', '/api/core/'),
+//   })),
+// }));
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -71,6 +72,15 @@ export default defineConfig({
     plugins: [groupIconVitePlugin()],
   },
   cleanUrls: true,
+  sitemap: {
+    hostname: 'https://self-assert.github.io',
+  },
+  rewrites(id) {
+    if (id.startsWith('api/core/')) {
+      return id.replace('api/core/', 'api/');
+    }
+    return id;
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/logo.png',
@@ -119,7 +129,9 @@ export default defineConfig({
     search: {
       provider: 'local',
     },
-    socialLinks: [{ icon: 'github', link: repositoryUrl }],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/self-assert/self-assert' },
+    ],
     outline: {
       level: [2, 3],
     },

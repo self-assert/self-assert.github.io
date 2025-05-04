@@ -12,6 +12,9 @@ jobs:
       contents: read
 
     steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
       - uses: ./.github/actions/setup
       - name: Generate package docs
         run: npm run update:self-assert
@@ -22,6 +25,9 @@ jobs:
     permissions:
       contents: read
     steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
       - uses: ./.github/actions/setup
       - name: Generate docs
         run: npm run docs:build

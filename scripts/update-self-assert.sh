@@ -39,7 +39,10 @@ npm run docs:api
 
 cd "$root_dir"
 
-rsync -a --delete submodules/self-assert/docs/api/ site/self-assert-api/
-rsync -a --delete submodules/self-assert/examples/ site/self-assert-examples/
+mkdir -p site/api/core/
+mkdir -p site/examples/core/
+
+rsync -a --delete submodules/self-assert/docs/api/ site/api/core/
+rsync -a --delete submodules/self-assert/examples/ site/examples/core/
 
 msg "${GREEN}Done${NOFORMAT}"

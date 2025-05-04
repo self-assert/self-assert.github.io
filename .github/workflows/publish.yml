@@ -34,7 +34,9 @@ jobs:
 
     steps:
       - name: Generate package docs
-        run: npm run update:self-assert
+        run: |
+          ls
+          npm run update:self-assert
 
   build:
     needs: build-self-assert-docs

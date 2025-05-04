@@ -1,0 +1,6 @@
+[submodule "submodules/self-assert"]
+	path = submodules/self-assert
+	url = https://github.com/self-assert/self-assert.git
+[submodule "submodules/self-assert-react"]
+	path = submodules/self-assert-react
+	url = https://github.com/self-assert/self-assert-react.git

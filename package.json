@@ -1,0 +1,25 @@
+{
+  "name": "self-assert.github.io",
+  "version": "0.0.0",
+  "description": "self-assert docs",
+  "private": true,
+  "scripts": {
+    "docs:dev": "vitepress dev site",
+    "docs:build": "vitepress build site",
+    "docs:preview": "vitepress preview site"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/self-assert/self-assert.github.io.git"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/self-assert/self-assert.github.io/issues"
+  },
+  "homepage": "https://github.com/self-assert/self-assert.github.io#readme",
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  }
+}

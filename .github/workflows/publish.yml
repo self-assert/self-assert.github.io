@@ -6,11 +6,10 @@ on:
     branches: [main]
 
 jobs:
-  build-self-assert-docs:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-
     steps:
       - uses: actions/checkout@v4
         with:
@@ -18,17 +17,6 @@ jobs:
       - uses: ./.github/actions/setup
       - name: Generate package docs
         run: npm run update:self-assert
-
-  build:
-    needs: build-self-assert-docs
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
-      - uses: ./.github/actions/setup
       - name: Generate docs
         run: npm run docs:build
       - name: Setup Pages

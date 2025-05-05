@@ -3,6 +3,9 @@ name: Submodules update
 on:
   workflow_dispatch:
   workflow_call:
+    secrets:
+      GH_PAT:
+        required: true
 
 jobs:
   update:
@@ -19,6 +22,7 @@ jobs:
         with:
           submodules: true
           repository: self-assert/self-assert.github.io
+          token: ${{ secrets.GH_PAT }}
 
       - name: Update submodules
         run: git submodule update --init --recursive --remote

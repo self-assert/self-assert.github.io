@@ -11,6 +11,9 @@ jobs:
     outputs:
       did_commit: ${{ steps.commit.outputs.did_commit }}
 
+    permissions:
+      contents: write
+      
     steps:
       - uses: actions/checkout@v4
         with:

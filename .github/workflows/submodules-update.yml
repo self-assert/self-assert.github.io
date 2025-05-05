@@ -13,11 +13,12 @@ jobs:
 
     permissions:
       contents: write
-      
+
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
+          repository: self-assert/self-assert.github.io
 
       - name: Update submodules
         run: git submodule update --init --recursive --remote

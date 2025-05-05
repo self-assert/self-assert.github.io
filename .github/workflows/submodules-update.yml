@@ -1,0 +1,34 @@
+name: Submodules update
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    outputs:
+      did_commit: ${{ steps.commit.outputs.did_commit }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Update submodules
+        run: git submodule update --init --recursive --remote
+
+      - name: Commit changes if needed
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git commit -am "chore: update submodules"
+            git push
+            echo "did_commit=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No changes to commit"
+            echo "did_commit=false" >> "$GITHUB_OUTPUT"
+          fi

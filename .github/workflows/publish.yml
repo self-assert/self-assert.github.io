@@ -23,7 +23,7 @@ jobs:
 
       - name: Debug
         run: |
-          echo ${{ toJson(steps.pages.outputs) }}
+          ${{ toJson(steps.pages.outputs) }}
 
   #     - name: Upload artifact
   #       uses: actions/upload-pages-artifact@v3

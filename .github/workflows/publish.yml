@@ -10,33 +10,36 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: true
-      - uses: ./.github/actions/setup
-      - name: Generate package docs
-        run: npm run update:self-assert
-      - name: Generate docs
-        run: npm run docs:build
+          repository: self-assert/self-assert
+          ref: main
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./site/.vitepress/dist
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{steps.deployment.outputs.page_url}}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Debug
+        run: |
+          echo ${{ toJson(steps.pages.outputs) }}
+
+  #     - name: Upload artifact
+  #       uses: actions/upload-pages-artifact@v3
+  #       with:
+  #         path: ./site/.vitepress/dist
+
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     pages: write
+  #     id-token: write
+  #   environment:
+  #     name: github-pages
+  #     url: ${{steps.deployment.outputs.page_url}}
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4

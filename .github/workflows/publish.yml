@@ -23,7 +23,9 @@ jobs:
 
       - name: Debug
         run: |
-          ${{ toJson(steps.pages.outputs) }}
+          echo $GITHUB_CONTEXT
+        env:
+          GITHUB_CONTEXT: ${{ toJson(steps.pages.outputs) }}
 
   #     - name: Upload artifact
   #       uses: actions/upload-pages-artifact@v3

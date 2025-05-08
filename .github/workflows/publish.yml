@@ -13,14 +13,10 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
-        with:
-          repository: self-assert/self-assert.github.io
-          ref: feature/publish-artifact
-
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
+      # - uses: actions/checkout@v4
+      #   with:
+      #     repository: self-assert/self-assert.github.io
+      #     ref: feature/publish-artifact
 
       - uses: actions/checkout@v4
         with:
@@ -38,6 +34,10 @@ jobs:
 
       - name: Build
         run: npm run docs:build
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
 
       - name: Debug
         run: |

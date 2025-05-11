@@ -11,16 +11,27 @@ self-assert docs
 <div align="center">
 
 [![License](https://img.shields.io/badge/license-MIT-green)][license]
-
-<!-- [![Lint and Test](https://github.com/self-assert/self-assert/actions/workflows/ci.yml/badge.svg)][gha-lint-and-test] -->
-
-[Documentation][docs]
+[![Publish](https://github.com/self-assert/self-assert.github.io/actions/workflows/publish.yml/badge.svg)](https://github.com/self-assert/self-assert.github.io/actions/workflows/publish.yml)
 
 </div>
 
 ---
 
-Documentation site for the [`self-assert`](https://github.com/self-assert/self-assert) library.
+Documentation website for the [`self-assert`][main-repo] library.
+
+**<https://self-assert.github.io>**
+
+## About this repo
+
+This repository is **only** used to publish the documentation
+website to GitHub Pages.
+
+All website content is generated automatically from the
+[main project repository][main-repo], using the
+[publish workflow](./.github/workflows/publish.yml).
+
+If you want to contribute or make changes to the documentation, please do
+so in the main repository.
 
 ## License
 
@@ -30,3 +41,4 @@ Documentation site for the [`self-assert`](https://github.com/self-assert/self-a
 
 [license]: https://github.com/self-assert/self-assert.github.io/blob/main/LICENSE
 [docs]: https://self-assert.github.io
+[main-repo]: https://github.com/self-assert/self-assert
